@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valdo Madeiras</title>
+  <meta name="description" content="Valdo Madeiras – Especialista em montagem de portas, janelas e madeiras sob medida desde 2009. Qualidade, precisão e atendimento personalizado em todo o Brasil.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Valdo Madeiras">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Valdo Madeiras">
+  <meta property="og:description" content="Especialista em montagem de portas, janelas e madeiras sob medida desde 2009. Qualidade e atendimento personalizado.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/logo.png">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Valdo Madeiras">
+  <meta name="twitter:description" content="Especialista em montagem de portas, janelas e madeiras sob medida desde 2009.">
+  <meta name="twitter:image" content="images/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary:        #6B3A2A;
+      --primary-light:  #8B5E3C;
+      --primary-dark:   #3D1F0F;
+      --accent:         #C8963E;
+      --accent-light:   #DDB06A;
+      --cream:          #FAF6F1;
+      --cream-dark:     #EFE3D0;
+      --text-dark:      #2C1A0E;
+      --text-mid:       #5C3D2E;
+      --text-light:     #9A7060;
+      --white:          #FFFFFF;
+      --header-h:       72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text-dark);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    html, body { overflow-x: hidden; }
+
+    img { max-width: 100%; display: block; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Utilidades ───────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-tag {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 12px;
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(200, 150, 62, 0.12);
+      padding: 6px 16px;
+      border-radius: 30px;
+      border: 1px solid rgba(200, 150, 62, 0.3);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-mid);
+      text-align: center;
+      max-width: 620px;
+      margin: 14px auto 0;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border: 2px solid var(--primary);
+      cursor: pointer;
+      transition: background .25s, color .25s, border-color .25s;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border: 2px solid rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: background .25s, border-color .25s;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: var(--white);
+    }
+
+    /* ── Header ───────────────────────────────────────────────── */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      z-index: 1000;
+      background: rgba(61, 31, 15, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200,150,62,.25);
+      transition: box-shadow .3s;
+    }
+    #header.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,.35); }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--header-h);
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: var(--white);
+      flex-shrink: 0;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .logo-text span { color: var(--accent-light); display: block; font-size: 11px; font-weight: 400; font-family: 'Lato', sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+
+    nav { display: flex; align-items: center; gap: 6px; }
+    nav a {
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .3px;
+      padding: 8px 14px;
+      border-radius: 5px;
+      transition: color .2s, background .2s;
+    }
+    nav a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+
+    .header-cta {
+      background: var(--accent);
+      color: var(--primary-dark) !important;
+      border-radius: 5px;
+    }
+    .header-cta:hover { background: var(--accent-light) !important; }
+
+    /* Menu mobile */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 22px;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    #navMenu {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── Hero ─────────────────────────────────────────────────── */
+    #hero {
+      padding-top: var(--header-h);
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(61,31,15,.92) 0%, rgba(107,58,42,.88) 55%, rgba(61,31,15,.92) 100%),
+        repeating-linear-gradient(100deg, rgba(200,150,62,.04) 0px, rgba(200,150,62,.04) 1px, transparent 1px, transparent 80px),
+        repeating-linear-gradient(10deg, rgba(200,150,62,.025) 0px, rgba(200,150,62,.025) 1px, transparent 1px, transparent 100px);
+      background-color: #3D1F0F;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,150,62,.15);
+      border: 1px solid rgba(200,150,62,.35);
+      border-radius: 30px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-light);
+      margin-bottom: 24px;
+      letter-spacing: .5px;
+    }
+    .hero-badge i { font-size: 12px; }
+
+    .hero-inner h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5.5vw, 62px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+    .hero-inner h1 span { color: var(--accent-light); }
+
+    .hero-inner h2 {
+      font-family: 'Lato', sans-serif;
+      font-size: clamp(16px, 2vw, 19px);
+      font-weight: 400;
+      color: rgba(255,255,255,.75);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .hero-slogan {
+      font-style: italic;
+      color: var(--accent-light);
+      font-size: 15px;
+      margin-bottom: 36px;
+      opacity: .9;
+    }
+
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .stat-item { text-align: center; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Card lateral hero */
+    .hero-card {
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(200,150,62,.25);
+      border-radius: 16px;
+      padding: 36px 32px;
+    }
+    .hero-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero-card-list { list-style: none; }
+    .hero-card-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.8);
+      font-size: 14.5px;
+    }
+    .hero-card-list li:last-child { border-bottom: none; }
+    .hero-card-list li i {
+      color: var(--accent);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .hero-card-cta {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hero-card-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 14.5px;
+      font-weight: 700;
+      transition: background .25s, color .25s;
+    }
+    .cta-whats {
+      background: #25D366;
+      color: var(--white);
+    }
+    .cta-whats:hover { background: #1ebe5d; }
+    .cta-mail {
+      background: rgba(255,255,255,.1);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.25);
+    }
+    .cta-mail:hover { background: rgba(255,255,255,.18); }
+
+    /* ── Sobre ────────────────────────────────────────────────── */
+    #sobre {
+      padding: 96px 0;
+      background: var(--white);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      margin-top: 56px;
+    }
+
+    .sobre-visual {
+      position: relative;
+    }
+
+    .sobre-bg-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      border-radius: 16px;
+      padding: 48px 40px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .sobre-bg-card::before {
+      content: '\f1bb';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      right: -20px;
+      bottom: -20px;
+      font-size: 160px;
+      color: rgba(255,255,255,.06);
+      pointer-events: none;
+    }
+
+    .sobre-bg-card .year {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 800;
+      color: var(--accent-light);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .sobre-bg-card .year-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 24px;
+    }
+    .sobre-bg-card p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.82);
+    }
+
+    .sobre-mini-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .mini-card {
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      border-radius: 10px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .mini-card i {
+      color: var(--accent);
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .mini-card strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--primary-dark);
+    }
+    .mini-card span {
+      font-size: 12px;
+      color: var(--text-light);
+    }
+
+    .sobre-content { }
+    .sobre-content .section-tag { margin: 0 0 12px; }
+    .sobre-content .section-title { text-align: left; }
+    .sobre-content p {
+      font-size: 16px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-top: 16px;
+    }
+
+    .mvv-list { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .mvv-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--cream);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+    .mvv-item i { color: var(--primary); font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+    .mvv-item h4 { font-size: 15px; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; }
+    .mvv-item p { font-size: 14px; color: var(--text-mid); line-height: 1.6; margin: 0; }
+
+    /* ── Serviços ─────────────────────────────────────────────── */
+    #servicos {
+      padding: 96px 0;
+      background: var(--cream);
+    }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .servico-card {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      border-radius: 14px;
+      padding: 36px 28px;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+    }
+    .servico-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(107,58,42,.12);
+      border-color: var(--accent);
+    }
+
+    .servico-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; color: var(--white);
+      margin-bottom: 20px;
+    }
+    .servico-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+    .servico-card p {
+      font-size: 14.5px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+    .servico-card .servico-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      transition: gap .2s;
+    }
+    .servico-card:hover .servico-link { gap: 10px; }
+
+    /* ── Diferenciais ─────────────────────────────────────────── */
+    #diferenciais {
+      padding: 96px 0;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    }
+
+    #diferenciais .section-tag { background: rgba(200,150,62,.15); color: var(--accent-light); border-color: rgba(200,150,62,.3); }
+    #diferenciais .section-title { color: var(--white); }
+    #diferenciais .section-subtitle { color: rgba(255,255,255,.7); }
+
+    .diferenciais-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .diferencial-item {
+      text-align: center;
+      padding: 32px 20px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(200,150,62,.18);
+      border-radius: 14px;
+      transition: background .3s, border-color .3s;
+    }
+    .diferencial-item:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(200,150,62,.45);
+    }
+    .diferencial-item i {
+      font-size: 36px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .diferencial-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .diferencial-item p {
+      font-size: 14px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.65;
+    }
+
+    /* ── Contato ──────────────────────────────────────────────── */
+    #contato {
+      padding: 96px 0;
+      background: var(--white);
+    }
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 56px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    .contato-info { display: flex; flex-direction: column; gap: 20px; }
+
+    .info-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px;
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      border-radius: 12px;
+    }
+    .info-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 18px;
+      flex-shrink: 0;
+    }
+    .info-card h4 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+    .info-card p, .info-card a {
+      font-size: 15px;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+    .info-card a:hover { color: var(--primary); }
+
+    /* Formulário */
+    .contato-form-wrap {
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      border-radius: 16px;
+      padding: 40px;
+    }
+    .contato-form-wrap h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 24px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-mid);
+      letter-spacing: .3px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 12px 16px;
+      border: 1.5px solid var(--cream-dark);
+      border-radius: 8px;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      color: var(--text-dark);
+      background: var(--white);
+      transition: border-color .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--primary); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .25s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-submit:hover { background: var(--primary-dark); }
+
+    /* Mapa */
+    .mapa-wrap {
+      margin-top: 40px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--cream-dark);
+      height: 280px;
+    }
+    .mapa-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    footer {
+      background: var(--primary-dark);
+      padding: 48px 0 24px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 280px 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .footer-brand .logo-text { font-size: 22px; }
+    .footer-brand p {
+      font-size: 14px;
+      color: rgba(255,255,255,.55);
+      margin-top: 14px;
+      line-height: 1.65;
+    }
+    .footer-brand .slogan-footer {
+      font-style: italic;
+      color: var(--accent-light);
+      font-size: 13px;
+      margin-top: 10px;
+      opacity: .85;
+    }
+
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 14px;
+      color: rgba(255,255,255,.55);
+      display: flex; align-items: center; gap: 8px;
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: var(--accent-light); }
+    .footer-col ul li a i { font-size: 12px; }
+
+    .footer-bottom {
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,.4); }
+    .footer-bottom a { color: rgba(255,255,255,.6); transition: color .2s; }
+    .footer-bottom a:hover { color: var(--accent-light); }
+
+    /* ── WhatsApp flutuante ───────────────────────────────────── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 900;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 18px rgba(37,211,102,.45);
+      color: var(--white);
+      font-size: 26px;
+      transition: background .2s, transform .2s;
+    }
+    .whatsapp-float:hover { background: #1ebe5d; transform: scale(1.06); }
+
+    /* ── Scroll suave de âncoras (offset header) ──────────────── */
+    section, [id] { scroll-margin-top: var(--header-h); }
+
+    /* ── Responsividade ───────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-card { max-width: 480px; }
+      .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
+      .diferenciais-grid { grid-template-columns: repeat(2, 1fr); }
+      .contato-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      #navMenu {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        position: absolute;
+        top: var(--header-h);
+        left: 0; right: 0;
+        background: var(--primary-dark);
+        padding: 16px 20px;
+        border-top: 1px solid rgba(200,150,62,.2);
+        gap: 4px;
+      }
+      #navMenu.open { display: flex; }
+      #navMenu a { padding: 12px 16px; border-radius: 6px; }
+      .servicos-grid { grid-template-columns: 1fr; }
+      .diferenciais-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-stats { gap: 20px; }
+      .sobre-mini-cards { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+      .diferenciais-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 16px; }
+      .contato-form-wrap { padding: 24px 20px; }
+    }
+
+    @media (min-width: 1400px) {
+      .container { max-width: 1280px; }
+      .hero-inner { grid-template-columns: 1fr 460px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────── -->
+  <header id="header">
+    <div class="container">
+      <div class="header-inner">
+
+        <a href="#hero" class="logo-wrap" aria-label="Valdo Madeiras – início">
+          <div class="logo-icon"><i class="fas fa-tree" aria-hidden="true"></i></div>
+          <div class="logo-text">
+            Valdo Madeiras
+            <span>Desde 2009</span>
+          </div>
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
+          <i class="fas fa-bars" id="menuIcon" aria-hidden="true"></i>
+        </button>
+
+        <nav id="navMenu" role="navigation" aria-label="Navegação principal">
+          <a href="#sobre">Sobre</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#diferenciais">Diferenciais</a>
+          <a href="#contato">Contato</a>
+          <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer" class="header-cta">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar agora
+          </a>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Hero ───────────────────────────────────────────────── -->
+  <section id="hero" aria-label="Apresentação da empresa">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            Referência em madeiras desde 2009
+          </div>
+
+          <h1>Valdo<br><span>Madeiras</span></h1>
+
+          <h2>Especialistas em montagem de portas, janelas e madeiras sob medida para transformar seu espaço com qualidade e precisão.</h2>
+
+          <p class="hero-slogan">
+            <i class="fas fa-quote-left" aria-hidden="true" style="font-size:12px; margin-right:6px; opacity:.7;"></i>
+            Tudo posso naquele que me fortalece
+          </p>
+
+          <div class="hero-btns">
+            <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              Solicitar orçamento
+            </a>
+            <a href="#servicos" class="btn-outline">
+              <i class="fas fa-list" aria-hidden="true"></i>
+              Ver serviços
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">+15</div>
+              <div class="stat-label">Anos de experiência</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">2009</div>
+              <div class="stat-label">Ano de fundação</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Sob medida</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3><i class="fas fa-tools" aria-hidden="true" style="color:var(--accent); margin-right:10px;"></i>Nossos serviços</h3>
+          <ul class="hero-card-list">
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Montagem de portas residenciais e comerciais</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Portas sob medida personalizadas</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Janelas de madeira sob medida</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Esquadrias e acabamentos em madeira</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Reformas e restaurações em madeira</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Atendimento em todo o Brasil</li>
+          </ul>
+          <div class="hero-card-cta">
+            <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer" class="cta-whats">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              (21) 96480-8413
+            </a>
+            <a href="mailto:valdoimperio@gmail.com" class="cta-mail">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              valdoimperio@gmail.com
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Sobre ───────────────────────────────────────────────── -->
+  <section id="sobre" aria-labelledby="sobre-titulo">
+    <div class="container">
+      <span class="section-tag">Nossa história</span>
+      <h2 class="section-title" id="sobre-titulo">Mais de 15 anos trabalhando<br>com madeira de qualidade</h2>
+      <p class="section-subtitle">Conheça a trajetória da Valdo Madeiras e o compromisso que nos move dia a dia.</p>
+
+      <div class="sobre-grid">
+
+        <div class="sobre-visual">
+          <div class="sobre-bg-card">
+            <div class="year">2009</div>
+            <div class="year-label">Ano de fundação</div>
+            <p>A Valdo Madeiras nasceu com um propósito claro: oferecer soluções completas em madeira com qualidade, honestidade e dedicação. Desde o primeiro dia, nosso trabalho é guiado pela fé e pelo comprometimento com cada cliente.</p>
+          </div>
+          <div class="sobre-mini-cards">
+            <div class="mini-card">
+              <i class="fas fa-medal" aria-hidden="true"></i>
+              <strong>+15</strong>
+              <span>Anos no mercado</span>
+            </div>
+            <div class="mini-card">
+              <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+              <strong>Nacional</strong>
+              <span>Área de atuação</span>
+            </div>
+            <div class="mini-card">
+              <i class="fas fa-ruler-combined" aria-hidden="true"></i>
+              <strong>100%</strong>
+              <span>Sob medida</span>
+            </div>
+            <div class="mini-card">
+              <i class="fas fa-handshake" aria-hidden="true"></i>
+              <strong>Confiança</strong>
+              <span>E transparência</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sobre-content">
+          <span class="section-tag">Missão, visão e valores</span>
+          <h2 class="section-title" style="text-align:left;">Comprometimento em cada detalhe</h2>
+
+          <p>Fundada em 2009, a Valdo Madeiras é especializada em montagem de portas, fabricação de janelas e tudo que envolve o trabalho com madeira. Atendemos clientes em todo o Brasil com soluções personalizadas e precisas.</p>
+
+          <p>Cada projeto é tratado de forma única: medimos, planejamos e executamos com atenção aos detalhes para garantir que o resultado final supere as expectativas do cliente.</p>
+
+          <div class="mvv-list">
+            <div class="mvv-item">
+              <i class="fas fa-bullseye" aria-hidden="true"></i>
+              <div>
+                <h4>Missão</h4>
+                <p>Oferecer soluções completas em madeira com excelência, transformando espaços com qualidade e comprometimento.</p>
+              </div>
+            </div>
+            <div class="mvv-item">
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <div>
+                <h4>Visão</h4>
+                <p>Ser referência nacional em madeiras e esquadrias personalizadas, reconhecida pela qualidade e confiança.</p>
+              </div>
+            </div>
+            <div class="mvv-item">
+              <i class="fas fa-heart" aria-hidden="true"></i>
+              <div>
+                <h4>Valores</h4>
+                <p>Fé, honestidade, dedicação, qualidade em cada detalhe e respeito ao cliente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Serviços ────────────────────────────────────────────── -->
+  <section id="servicos" aria-labelledby="servicos-titulo">
+    <div class="container">
+      <span class="section-tag">O que fazemos</span>
+      <h2 class="section-title" id="servicos-titulo">Serviços especializados<br>em madeira</h2>
+      <p class="section-subtitle">Tudo que envolve madeira, portas e janelas — feito com precisão e totalmente sob medida para você.</p>
+
+      <div class="servicos-grid">
+
+        <article class="servico-card">
+          <div class="servico-icon"><i class="fas fa-door-open" aria-hidden="true"></i></div>
+          <h3>Montagem de portas</h3>
+          <p>Instalação profissional de portas residenciais e comerciais com perfeito acabamento e nivelamento preciso.</p>
+          <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer" class="servico-link">
+            Solicitar orçamento <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <article class="servico-card">
+          <div class="servico-icon"><i class="fas fa-ruler-combined" aria-hidden="true"></i></div>
+          <h3>Portas sob medida</h3>
+          <p>Fabricação personalizada de portas em madeira para qualquer tipo de abertura, com design e dimensões exclusivas.</p>
+          <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer" class="servico-link">
+            Solicitar orçamento <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <article class="servico-card">
+          <div class="servico-icon"><i class="fas fa-border-all" aria-hidden="true"></i></div>
+          <h3>Janelas sob medida</h3>
+          <p>Janelas de madeira personalizadas com encaixe perfeito para qualquer imóvel, priorizando estética e funcionalidade.</p>
+          <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer" class="servico-link">
+            Solicitar orçamento <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <article class="servico-card">
+          <div class="servico-icon"><i class="fas fa-th-large" aria-hidden="true"></i></div>
+          <h3>Esquadrias de madeira</h3>
+          <p>Soluções completas em esquadrias para construções e reformas, com acabamento de alta qualidade.</p>
+          <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer" class="servico-link">
+            Solicitar orçamento <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <article class="servico-card">
+          <div class="servico-icon"><i class="fas fa-tree" aria-hidden="true"></i></div>
+          <h3>Madeiras especiais</h3>
+          <p>Fornecimento de madeiras selecionadas para projetos residenciais, comerciais e de construção civil.</p>
+          <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer" class="servico-link">
+            Solicitar orçamento <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <article class="servico-card">
+          <div class="servico-icon"><i class="fas fa-wrench" aria-hidden="true"></i></div>
+          <h3>Reformas em madeira</h3>
+          <p>Restauração e reforma de estruturas, portas e janelas antigas, devolvendo vida e funcionalidade ao seu imóvel.</p>
+          <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer" class="servico-link">
+            Solicitar orçamento <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Diferenciais ────────────────────────────────────────── -->
+  <section id="diferenciais" aria-labelledby="diferenciais-titulo">
+    <div class="container">
+      <span class="section-tag">Por que nos escolher</span>
+      <h2 class="section-title" id="diferenciais-titulo">Nossos diferenciais</h2>
+      <p class="section-subtitle">Qualidade, experiência e comprometimento que fazem toda a diferença no resultado final.</p>
+
+      <div class="diferenciais-grid">
+
+        <div class="diferencial-item">
+          <i class="fas fa-award" aria-hidden="true"></i>
+          <h3>+15 anos de experiência</h3>
+          <p>Desde 2009 no mercado, acumulamos conhecimento técnico e prático para entregar sempre o melhor resultado.</p>
+        </div>
+
+        <div class="diferencial-item">
+          <i class="fas fa-ruler" aria-hidden="true"></i>
+          <h3>100% personalizado</h3>
+          <p>Cada projeto é único. Trabalhamos com medidas exatas para garantir encaixe perfeito em qualquer espaço.</p>
+        </div>
+
+        <div class="diferencial-item">
+          <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+          <h3>Atendimento nacional</h3>
+          <p>Atendemos clientes em todo o Brasil, levando qualidade e comprometimento para qualquer região.</p>
+        </div>
+
+        <div class="diferencial-item">
+          <i class="fas fa-handshake" aria-hidden="true"></i>
+          <h3>Transparência e confiança</h3>
+          <p>Orçamentos claros, prazos cumpridos e comunicação honesta em todas as etapas do serviço.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contato ─────────────────────────────────────────────── -->
+  <section id="contato" aria-labelledby="contato-titulo">
+    <div class="container">
+      <span class="section-tag">Entre em contato</span>
+      <h2 class="section-title" id="contato-titulo">Solicite seu orçamento</h2>
+      <p class="section-subtitle">Fale conosco pelo WhatsApp, e-mail ou pelo formulário. Respondemos rapidamente!</p>
+
+      <div class="contato-grid">
+
+        <div class="contato-info">
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
+            <div>
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer">(21) 96480-8413</a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+            <div>
+              <h4>E-mail</h4>
+              <a href="mailto:valdoimperio@gmail.com">valdoimperio@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
+            <div>
+              <h4>Endereço</h4>
+              <p>Estrada Do Calenque, 112</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
+            <div>
+              <h4>Horário de atendimento</h4>
+              <p>Segunda a sexta: 8h às 18h<br>Sábado: 8h às 13h</p>
+            </div>
+          </div>
+
+          <div class="mapa-wrap">
+            <iframe
+              src="https://maps.google.com/maps?q=Estrada+Do+Calenque+112&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              title="Localização da Valdo Madeiras"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+        </div>
+
+        <div class="contato-form-wrap">
+          <h3>Envie sua mensagem</h3>
+          <form id="contatoForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome completo *</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="telefone">Telefone *</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required autocomplete="tel">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="servico">Serviço de interesse</label>
+              <select id="servico" name="servico">
+                <option value="">Selecione um serviço</option>
+                <option value="montagem-portas">Montagem de portas</option>
+                <option value="portas-medida">Portas sob medida</option>
+                <option value="janelas-medida">Janelas sob medida</option>
+                <option value="esquadrias">Esquadrias de madeira</option>
+                <option value="madeiras">Madeiras especiais</option>
+                <option value="reformas">Reformas em madeira</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Mensagem *</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Descreva seu projeto ou dúvida..." required></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              Enviar mensagem
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <div class="logo-wrap">
+            <div class="logo-icon"><i class="fas fa-tree" aria-hidden="true"></i></div>
+            <div class="logo-text">
+              Valdo Madeiras
+              <span>Desde 2009</span>
+            </div>
+          </div>
+          <p>Especialistas em montagem de portas, janelas e madeiras sob medida. Qualidade e comprometimento em cada projeto.</p>
+          <p class="slogan-footer">"Tudo posso naquele que me fortalece" — Fp 4:13</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="#servicos"><i class="fas fa-chevron-right" aria-hidden="true"></i> Montagem de portas</a></li>
+            <li><a href="#servicos"><i class="fas fa-chevron-right" aria-hidden="true"></i> Portas sob medida</a></li>
+            <li><a href="#servicos"><i class="fas fa-chevron-right" aria-hidden="true"></i> Janelas sob medida</a></li>
+            <li><a href="#servicos"><i class="fas fa-chevron-right" aria-hidden="true"></i> Esquadrias de madeira</a></li>
+            <li><a href="#servicos"><i class="fas fa-chevron-right" aria-hidden="true"></i> Reformas em madeira</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <ul>
+            <li>
+              <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> (21) 96480-8413
+              </a>
+            </li>
+            <li>
+              <a href="mailto:valdoimperio@gmail.com">
+                <i class="fas fa-envelope" aria-hidden="true"></i> valdoimperio@gmail.com
+              </a>
+            </li>
+            <li>
+              <a href="#contato">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Estrada Do Calenque, 112
+              </a>
+            </li>
+            <li>
+              <a href="#contato">
+                <i class="fas fa-clock" aria-hidden="true"></i> Seg–Sex 8h–18h · Sáb 8h–13h
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Valdo Madeiras · CNPJ 62.163.459/0001-63</p>
+        <p>
+          <a href="mailto:valdoimperio@gmail.com">valdoimperio@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Rodapé MonteSite ───────────────────────────────────── -->
+  <div id="root"></div>
+  <div id="montesite-footer-badge"></div>
+  <script src="https://vaabpicspdbolvutnscp.supabase.co/functions/v1/get-footer-iframe"></script>
+
+  <!-- ── WhatsApp flutuante ─────────────────────────────────── -->
+  <a href="https://wa.me/5521964808413"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="whatsapp-float"
+     aria-label="Falar pelo WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+  </a>
+
+  <script>
+    // Header scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Menu mobile
+    const menuBtn = document.getElementById('menuBtn');
+    const menuIcon = document.getElementById('menuIcon');
+    const navMenu  = document.getElementById('navMenu');
+
+    menuBtn.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+      menuIcon.className = open ? 'fas fa-times' : 'fas fa-bars';
+    });
+
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuIcon.className = 'fas fa-bars';
+      });
+    });
+
+    // Formulário → WhatsApp
+    document.getElementById('contatoForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nome     = document.getElementById('nome').value.trim();
+      const telefone = document.getElementById('telefone').value.trim();
+      const servico  = document.getElementById('servico').value;
+      const mensagem = document.getElementById('mensagem').value.trim();
+
+      if (!nome || !telefone || !mensagem) {
+        alert('Por favor, preencha os campos obrigatórios (nome, telefone e mensagem).');
+        return;
+      }
+
+      const servicoMap = {
+        'montagem-portas': 'Montagem de portas',
+        'portas-medida':   'Portas sob medida',
+        'janelas-medida':  'Janelas sob medida',
+        'esquadrias':      'Esquadrias de madeira',
+        'madeiras':        'Madeiras especiais',
+        'reformas':        'Reformas em madeira',
+        'outro':           'Outro serviço'
+      };
+
+      const linhas = [
+        `Olá! Vim pelo site da Valdo Madeiras.`,
+        `*Nome:* ${nome}`,
+        `*Telefone:* ${telefone}`,
+        servico ? `*Serviço:* ${servicoMap[servico] || servico}` : '',
+        `*Mensagem:* ${mensagem}`
+      ].filter(Boolean).join('\n');
+
+      window.open('https://wa.me/5521964808413?text=' + encodeURIComponent(linhas), '_blank');
+    });
+  </script>
+
+</body>
+</html>

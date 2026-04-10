@@ -846,6 +846,48 @@
       .container { max-width: 1280px; }
       .hero-inner { grid-template-columns: 1fr 460px; }
     }
+
+    /* ── Hero entrance ─────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge      { animation: fadeUp .65s ease .10s both; }
+    .hero-content h1 { animation: fadeUp .65s ease .25s both; }
+    .hero-content h2 { animation: fadeUp .65s ease .40s both; }
+    .hero-slogan     { animation: fadeUp .65s ease .50s both; }
+    .hero-btns       { animation: fadeUp .65s ease .60s both; }
+    .hero-stats      { animation: fadeUp .65s ease .75s both; }
+    .hero-card       { animation: fadeUp .80s ease .35s both; }
+
+    /* ── Scroll reveal ─────────────────────────────────────────── */
+    .reveal, .reveal-l, .reveal-r {
+      opacity: 0;
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal   { transform: translateY(36px); }
+    .reveal-l { transform: translateX(-40px); }
+    .reveal-r { transform: translateX(40px); }
+    .reveal.show, .reveal-l.show, .reveal-r.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── WhatsApp pulse ─────────────────────────────────────────── */
+    @keyframes waPulse {
+      0%   { box-shadow: 0 0 0 0   rgba(37,211,102,.5),  0 4px 18px rgba(37,211,102,.45); }
+      70%  { box-shadow: 0 0 0 14px rgba(37,211,102,0),   0 4px 18px rgba(37,211,102,.45); }
+      100% { box-shadow: 0 0 0 0   rgba(37,211,102,0),   0 4px 18px rgba(37,211,102,.45); }
+    }
+    .whatsapp-float { animation: waPulse 2.2s infinite; }
+
+    /* ── Reduced motion ─────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1372,6 +1414,62 @@
 
       window.open('https://wa.me/5521964808413?text=' + encodeURIComponent(linhas), '_blank');
     });
+  </script>
+
+
+  <script>
+    /* ── Scroll Reveal ──────────────────────────────────────────── */
+    const _rv = [];
+    [
+      { s: '#sobre .section-tag,#servicos .section-tag,#diferenciais .section-tag,#contato .section-tag',           c: 'reveal',   d: 0   },
+      { s: '#sobre .section-title,#servicos .section-title,#diferenciais .section-title,#contato .section-title',   c: 'reveal',   d: 100 },
+      { s: '#sobre .section-subtitle,#servicos .section-subtitle,#diferenciais .section-subtitle,#contato .section-subtitle', c: 'reveal', d: 200 },
+      { s: '.sobre-visual',      c: 'reveal-l', d: 0   },
+      { s: '.sobre-content',     c: 'reveal-r', d: 150 },
+      { s: '.sobre-bg-card',     c: 'reveal',   d: 0   },
+      { s: '.sobre-mini-cards',  c: 'reveal',   d: 200 },
+      { s: '.mvv-item',          c: 'reveal',   d: 0,  st: 100 },
+      { s: '.servico-card',      c: 'reveal',   d: 0,  st: 80  },
+      { s: '.diferencial-item',  c: 'reveal',   d: 0,  st: 100 },
+      { s: '.contato-info',      c: 'reveal-l', d: 0   },
+      { s: '.contato-form-wrap', c: 'reveal-r', d: 150 },
+      { s: '.info-card',         c: 'reveal',   d: 0,  st: 80  },
+    ].forEach(({ s, c, d, st = 0 }) =>
+      document.querySelectorAll(s).forEach((el, i) => {
+        el.classList.add(c);
+        el.style.transitionDelay = (d + i * st) + 'ms';
+        _rv.push(el);
+      })
+    );
+
+    const _rvObs = new IntersectionObserver((entries) => {
+      entries.forEach(({ isIntersecting, target }) => {
+        if (isIntersecting) { target.classList.add('show'); _rvObs.unobserve(target); }
+      });
+    }, { threshold: 0.12 });
+    _rv.forEach(el => _rvObs.observe(el));
+
+    /* ── Counter Animation ──────────────────────────────────────── */
+    function runCounter(el) {
+      const raw    = el.textContent.trim();
+      const prefix = (raw.match(/^[^0-9]*/) || [''])[0];
+      const suffix = (raw.match(/[^0-9]*$/) || [''])[0];
+      const total  = parseInt(raw.replace(/\D/g, ''));
+      if (isNaN(total)) return;
+      const t0 = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - t0) / 1800, 1);
+        el.textContent = prefix + Math.round((1 - Math.pow(1 - p, 3)) * total) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    }
+
+    const _cObs = new IntersectionObserver((entries) => {
+      entries.forEach(({ isIntersecting, target }) => {
+        if (isIntersecting) { runCounter(target); _cObs.unobserve(target); }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-number').forEach(el => _cObs.observe(el));
   </script>
 
 </body>

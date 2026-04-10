@@ -234,10 +234,9 @@
       padding-top: var(--header-h);
       min-height: 100vh;
       background:
-        linear-gradient(160deg, rgba(61,31,15,.92) 0%, rgba(107,58,42,.88) 55%, rgba(61,31,15,.92) 100%),
-        repeating-linear-gradient(100deg, rgba(200,150,62,.04) 0px, rgba(200,150,62,.04) 1px, transparent 1px, transparent 80px),
-        repeating-linear-gradient(10deg, rgba(200,150,62,.025) 0px, rgba(200,150,62,.025) 1px, transparent 1px, transparent 100px);
-      background-color: #3D1F0F;
+        linear-gradient(160deg, rgba(61,31,15,.88) 0%, rgba(107,58,42,.82) 55%, rgba(61,31,15,.88) 100%),
+        url('images/bg-hero.jpg') center / cover no-repeat;
+      background-attachment: scroll, fixed;
       display: flex;
       align-items: center;
     }
@@ -381,7 +380,10 @@
     /* ── Sobre ────────────────────────────────────────────────── */
     #sobre {
       padding: 96px 0;
-      background: var(--white);
+      background:
+        linear-gradient(rgba(255,255,255,.92), rgba(255,255,255,.92)),
+        url('images/bg-sobre.jpg') center / cover no-repeat;
+      background-attachment: scroll, fixed;
     }
 
     .sobre-grid {
@@ -493,7 +495,10 @@
     /* ── Serviços ─────────────────────────────────────────────── */
     #servicos {
       padding: 96px 0;
-      background: var(--cream);
+      background:
+        linear-gradient(rgba(250,246,241,.93), rgba(250,246,241,.93)),
+        url('images/bg-servicos.jpg') center / cover no-repeat;
+      background-attachment: scroll, fixed;
     }
 
     .servicos-grid {
@@ -551,7 +556,10 @@
     /* ── Diferenciais ─────────────────────────────────────────── */
     #diferenciais {
       padding: 96px 0;
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      background:
+        linear-gradient(135deg, rgba(61,31,15,.90) 0%, rgba(107,58,42,.86) 100%),
+        url('images/bg-diferenciais.jpg') center / cover no-repeat;
+      background-attachment: scroll, fixed;
     }
 
     #diferenciais .section-tag { background: rgba(200,150,62,.15); color: var(--accent-light); border-color: rgba(200,150,62,.3); }
@@ -785,6 +793,12 @@
     section, [id] { scroll-margin-top: var(--header-h); }
 
     /* ── Responsividade ───────────────────────────────────────── */
+    @media (max-width: 1023px) {
+      #hero, #sobre, #servicos, #diferenciais {
+        background-attachment: scroll, scroll;
+      }
+    }
+
     @media (max-width: 1100px) {
       .hero-inner { grid-template-columns: 1fr; gap: 40px; }
       .hero-card { max-width: 480px; }

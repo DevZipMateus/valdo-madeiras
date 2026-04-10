@@ -918,6 +918,172 @@
       #sobre, #servicos, #diferenciais, #contato { padding: 112px 0; }
     }
 
+    /* ── Scroll progress bar ───────────────────────────────────── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    }
+
+    /* ── Back to top ────────────────────────────────────────────── */
+    .back-top {
+      position: fixed; bottom: 96px; right: 28px; z-index: 900;
+      width: 44px; height: 44px;
+      background: var(--primary); border: none; border-radius: 50%;
+      color: var(--white); font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity .3s, transform .3s, background .2s;
+      pointer-events: none;
+      box-shadow: 0 4px 14px rgba(107,58,42,.35);
+    }
+    .back-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .back-top:hover { background: var(--primary-dark); }
+
+    /* ── WhatsApp tooltip ───────────────────────────────────────── */
+    .wa-tooltip {
+      position: absolute; right: calc(100% + 12px); top: 50%;
+      transform: translateY(-50%);
+      background: var(--white); color: var(--text-dark);
+      font-size: 13px; font-weight: 700;
+      padding: 6px 14px; border-radius: 20px; white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,.15);
+      opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    .wa-tooltip::after {
+      content: ''; position: absolute; left: 100%; top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent; border-left-color: var(--white);
+    }
+    .whatsapp-float:hover .wa-tooltip { opacity: 1; }
+
+    /* ── Nav active ─────────────────────────────────────────────── */
+    nav a.active {
+      color: var(--white) !important;
+      background: rgba(200,150,62,.22) !important;
+    }
+
+    /* ── Galeria ────────────────────────────────────────────────── */
+    #galeria { padding: 96px 0; background: var(--cream-dark); }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 56px;
+    }
+    .galeria-item {
+      position: relative; border-radius: 12px; overflow: hidden;
+      aspect-ratio: 4 / 3; cursor: pointer;
+    }
+    .galeria-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .5s ease;
+    }
+    .galeria-item:hover img { transform: scale(1.07); }
+    .galeria-overlay {
+      position: absolute; inset: 0;
+      background: rgba(61,31,15,.55);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .3s;
+    }
+    .galeria-item:hover .galeria-overlay { opacity: 1; }
+    .galeria-overlay i { color: var(--white); font-size: 28px; }
+
+    /* ── Lightbox ───────────────────────────────────────────────── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+    .lb-img {
+      max-width: min(90vw, 1100px); max-height: 85vh;
+      object-fit: contain; border-radius: 8px; display: block;
+    }
+    .lb-close {
+      position: absolute; top: 16px; right: 20px;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px; color: var(--white); font-size: 18px;
+      width: 40px; height: 40px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,.22); }
+    .lb-prev, .lb-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: var(--white); font-size: 16px;
+      width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .lb-prev { left: 20px; } .lb-next { right: 20px; }
+    .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,.22); }
+
+    /* ── Depoimentos ────────────────────────────────────────────── */
+    #depoimentos { padding: 96px 0; background: var(--white); }
+
+    .depoimentos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-top: 56px;
+    }
+    .depo-card {
+      background: var(--cream); border: 1px solid var(--cream-dark);
+      border-radius: 16px; padding: 32px 28px; position: relative;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .depo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(107,58,42,.1);
+    }
+    .depo-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 80px; line-height: 1;
+      color: var(--accent); opacity: .18;
+      position: absolute; top: 8px; left: 20px; pointer-events: none;
+    }
+    .depo-stars { color: var(--accent); font-size: 15px; letter-spacing: 2px; margin-bottom: 14px; }
+    .depo-card > p {
+      font-size: 15px; color: var(--text-mid);
+      line-height: 1.75; font-style: italic; margin-bottom: 24px;
+    }
+    .depo-author { display: flex; align-items: center; gap: 12px; }
+    .depo-avatar {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: var(--white); font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .depo-author strong { display: block; font-size: 14.5px; color: var(--primary-dark); }
+    .depo-author span { font-size: 13px; color: var(--text-light); }
+
+    /* Responsive novos elementos */
+    @media (max-width: 1100px) {
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+      #galeria, #depoimentos { padding: 80px 0; }
+    }
+    @media (max-width: 768px) {
+      .depoimentos-grid { grid-template-columns: 1fr; }
+      #galeria, #depoimentos { padding: 72px 0; }
+    }
+    @media (max-width: 480px) {
+      .galeria-grid { grid-template-columns: 1fr; }
+      #galeria, #depoimentos { padding: 64px 0; }
+      .depo-card { padding: 24px 18px; }
+      .back-top { bottom: 90px; right: 16px; width: 40px; height: 40px; font-size: 14px; }
+    }
+    @media (max-width: 375px) {
+      #galeria, #depoimentos { padding: 56px 0; }
+      .depo-card { padding: 20px 14px; }
+    }
+    @media (min-width: 1920px) {
+      #galeria, #depoimentos { padding: 112px 0; }
+      .galeria-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
     /* ── Hero entrance ─────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(28px); }
@@ -983,6 +1149,8 @@
         <nav id="navMenu" role="navigation" aria-label="Navegação principal">
           <a href="#sobre">Sobre</a>
           <a href="#servicos">Serviços</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#depoimentos">Clientes</a>
           <a href="#diferenciais">Diferenciais</a>
           <a href="#contato">Contato</a>
           <a href="https://wa.me/5521964808413" target="_blank" rel="noopener noreferrer" class="header-cta">
@@ -1210,6 +1378,42 @@
     </div>
   </section>
 
+  <!-- ── Galeria ──────────────────────────────────────────────── -->
+  <section id="galeria" aria-labelledby="galeria-titulo">
+    <div class="container">
+      <span class="section-tag">Nossos trabalhos</span>
+      <h2 class="section-title" id="galeria-titulo">Projetos realizados<br>com excelência</h2>
+      <p class="section-subtitle">Cada obra entregue com precisão, acabamento impecável e total atenção aos detalhes.</p>
+
+      <div class="galeria-grid">
+        <div class="galeria-item" data-index="0">
+          <img src="images/galeria-1.jpg" alt="Carpinteiro trabalhando com madeira" loading="lazy">
+          <div class="galeria-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+        </div>
+        <div class="galeria-item" data-index="1">
+          <img src="images/galeria-2.jpg" alt="Ferramentas de carpintaria profissional" loading="lazy">
+          <div class="galeria-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+        </div>
+        <div class="galeria-item" data-index="2">
+          <img src="images/galeria-3.jpg" alt="Conjunto de ferramentas de marcenaria" loading="lazy">
+          <div class="galeria-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+        </div>
+        <div class="galeria-item" data-index="3">
+          <img src="images/galeria-4.jpg" alt="Bancada de carpintaria organizada" loading="lazy">
+          <div class="galeria-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+        </div>
+        <div class="galeria-item" data-index="4">
+          <img src="images/galeria-5.jpg" alt="Execução de serviço em madeira" loading="lazy">
+          <div class="galeria-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+        </div>
+        <div class="galeria-item" data-index="5">
+          <img src="images/galeria-6.jpg" alt="Tábuas de madeira selecionada" loading="lazy">
+          <div class="galeria-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Diferenciais ────────────────────────────────────────── -->
   <section id="diferenciais" aria-labelledby="diferenciais-titulo">
     <div class="container">
@@ -1241,6 +1445,55 @@
           <i class="fas fa-handshake" aria-hidden="true"></i>
           <h3>Transparência e confiança</h3>
           <p>Orçamentos claros, prazos cumpridos e comunicação honesta em todas as etapas do serviço.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Depoimentos ──────────────────────────────────────────── -->
+  <section id="depoimentos" aria-labelledby="depo-titulo">
+    <div class="container">
+      <span class="section-tag">Depoimentos</span>
+      <h2 class="section-title" id="depo-titulo">O que nossos clientes<br>têm a dizer</h2>
+      <p class="section-subtitle">A satisfação de cada cliente é o nosso maior reconhecimento.</p>
+
+      <div class="depoimentos-grid">
+
+        <div class="depo-card">
+          <div class="depo-stars">★★★★★</div>
+          <p>"Contratei o Valdo para montar as portas do meu apartamento novo. Serviço impecável, pontual e com acabamento perfeito. Recomendo demais!"</p>
+          <div class="depo-author">
+            <div class="depo-avatar">JS</div>
+            <div>
+              <strong>José Silva</strong>
+              <span>Rio de Janeiro, RJ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="depo-card">
+          <div class="depo-stars">★★★★★</div>
+          <p>"Portas e janelas sob medida entregues no prazo e com qualidade excepcional. Profissional muito dedicado e atencioso do início ao fim."</p>
+          <div class="depo-author">
+            <div class="depo-avatar">MC</div>
+            <div>
+              <strong>Maria Costa</strong>
+              <span>Niterói, RJ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="depo-card">
+          <div class="depo-stars">★★★★★</div>
+          <p>"Reforma completa das esquadrias da minha casa. Ficou muito melhor do que esperava. Trabalho de altíssima qualidade e preço justo!"</p>
+          <div class="depo-author">
+            <div class="depo-avatar">CS</div>
+            <div>
+              <strong>Carlos Souza</strong>
+              <span>São Paulo, SP</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -1418,11 +1671,29 @@
   <script src="https://vaabpicspdbolvutnscp.supabase.co/functions/v1/get-footer-iframe"></script>
 
   <!-- ── WhatsApp flutuante ─────────────────────────────────── -->
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Back to top -->
+  <button class="back-top" id="backTop" aria-label="Voltar ao topo">
+    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de imagens">
+    <button class="lb-close" id="lbClose" aria-label="Fechar"><i class="fas fa-times" aria-hidden="true"></i></button>
+    <button class="lb-prev" id="lbPrev" aria-label="Anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+    <button class="lb-next" id="lbNext" aria-label="Próxima"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+    <img class="lb-img" id="lbImg" src="" alt="">
+  </div>
+
+  <!-- WhatsApp flutuante -->
   <a href="https://wa.me/5521964808413"
      target="_blank"
      rel="noopener noreferrer"
      class="whatsapp-float"
      aria-label="Falar pelo WhatsApp">
+    <span class="wa-tooltip">Fale conosco!</span>
     <i class="fab fa-whatsapp" aria-hidden="true"></i>
   </a>
 
@@ -1484,6 +1755,15 @@
       ].filter(Boolean).join('\n');
 
       window.open('https://wa.me/5521964808413?text=' + encodeURIComponent(linhas), '_blank');
+
+      const btn = document.querySelector('.form-submit');
+      btn.innerHTML = '<i class="fas fa-check"></i> Mensagem enviada!';
+      btn.style.background = '#25D366';
+      document.getElementById('contatoForm').reset();
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar mensagem';
+        btn.style.background = '';
+      }, 4000);
     });
   </script>
 
@@ -1492,16 +1772,18 @@
     /* ── Scroll Reveal ──────────────────────────────────────────── */
     const _rv = [];
     [
-      { s: '#sobre .section-tag,#servicos .section-tag,#diferenciais .section-tag,#contato .section-tag',           c: 'reveal',   d: 0   },
-      { s: '#sobre .section-title,#servicos .section-title,#diferenciais .section-title,#contato .section-title',   c: 'reveal',   d: 100 },
-      { s: '#sobre .section-subtitle,#servicos .section-subtitle,#diferenciais .section-subtitle,#contato .section-subtitle', c: 'reveal', d: 200 },
+      { s: '#sobre .section-tag,#servicos .section-tag,#galeria .section-tag,#diferenciais .section-tag,#depoimentos .section-tag,#contato .section-tag', c: 'reveal', d: 0 },
+      { s: '#sobre .section-title,#servicos .section-title,#galeria .section-title,#diferenciais .section-title,#depoimentos .section-title,#contato .section-title', c: 'reveal', d: 100 },
+      { s: '#sobre .section-subtitle,#servicos .section-subtitle,#galeria .section-subtitle,#diferenciais .section-subtitle,#depoimentos .section-subtitle,#contato .section-subtitle', c: 'reveal', d: 200 },
       { s: '.sobre-visual',      c: 'reveal-l', d: 0   },
       { s: '.sobre-content',     c: 'reveal-r', d: 150 },
       { s: '.sobre-bg-card',     c: 'reveal',   d: 0   },
       { s: '.sobre-mini-cards',  c: 'reveal',   d: 200 },
       { s: '.mvv-item',          c: 'reveal',   d: 0,  st: 100 },
       { s: '.servico-card',      c: 'reveal',   d: 0,  st: 80  },
+      { s: '.galeria-item',      c: 'reveal',   d: 0,  st: 60  },
       { s: '.diferencial-item',  c: 'reveal',   d: 0,  st: 100 },
+      { s: '.depo-card',         c: 'reveal',   d: 0,  st: 100 },
       { s: '.contato-info',      c: 'reveal-l', d: 0   },
       { s: '.contato-form-wrap', c: 'reveal-r', d: 150 },
       { s: '.info-card',         c: 'reveal',   d: 0,  st: 80  },
@@ -1541,6 +1823,70 @@
       });
     }, { threshold: 0.5 });
     document.querySelectorAll('.stat-number').forEach(el => _cObs.observe(el));
+
+    /* ── Scroll Progress ────────────────────────────────────────── */
+    const _prog = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      _prog.style.width = (window.scrollY / total * 100) + '%';
+    }, { passive: true });
+
+    /* ── Back to Top ────────────────────────────────────────────── */
+    const _btt = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      _btt.classList.toggle('show', window.scrollY > 400);
+    }, { passive: true });
+    _btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ── Nav Active on Scroll ───────────────────────────────────── */
+    const _navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const _navObs = new IntersectionObserver((entries) => {
+      entries.forEach(({ isIntersecting, target }) => {
+        if (isIntersecting) {
+          _navLinks.forEach(a => a.classList.remove('active'));
+          const link = document.querySelector(`nav a[href="#${target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('section[id]').forEach(s => _navObs.observe(s));
+
+    /* ── Lightbox ───────────────────────────────────────────────── */
+    const _lb    = document.getElementById('lightbox');
+    const _lbImg = document.getElementById('lbImg');
+    const _imgs  = Array.from(document.querySelectorAll('.galeria-item img'));
+    let _lbIdx   = 0;
+
+    function openLb(idx) {
+      _lbIdx = idx;
+      _lbImg.src = _imgs[idx].src;
+      _lbImg.alt = _imgs[idx].alt;
+      _lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLb() {
+      _lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function stepLb(dir) {
+      _lbIdx = (_lbIdx + dir + _imgs.length) % _imgs.length;
+      _lbImg.src = _imgs[_lbIdx].src;
+      _lbImg.alt = _imgs[_lbIdx].alt;
+    }
+
+    document.querySelectorAll('.galeria-item').forEach((item, i) => {
+      item.addEventListener('click', () => openLb(i));
+    });
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    document.getElementById('lbPrev').addEventListener('click', () => stepLb(-1));
+    document.getElementById('lbNext').addEventListener('click', () => stepLb(1));
+    _lb.addEventListener('click', e => { if (e.target === _lb) closeLb(); });
+    document.addEventListener('keydown', e => {
+      if (!_lb.classList.contains('open')) return;
+      if (e.key === 'Escape')      closeLb();
+      if (e.key === 'ArrowLeft')   stepLb(-1);
+      if (e.key === 'ArrowRight')  stepLb(1);
+    });
   </script>
 
 </body>
